@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ID Card Studio — Bulk ID Card Generator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ================= Top toolbar ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">ID</div>
+      <div>
+        <div class="brand-name">ID Card Studio</div>
+        <input id="projName" class="proj-name" spellcheck="false" />
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn ghost" id="btnUndo" title="Undo (Ctrl+Z)">↶</button>
+      <button class="btn ghost" id="btnRedo" title="Redo (Ctrl+Y)">↷</button>
+      <span class="divider"></span>
+      <button class="btn ghost" id="btnOpen" title="Open project">Open</button>
+      <button class="btn ghost" id="btnSave" title="Save project (Ctrl+S)">Save</button>
+      <span class="divider"></span>
+      <button class="btn ghost" id="btnTheme" title="Toggle theme">🌙</button>
+      <button class="btn primary" id="btnGenerate">Generate PDF</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <!-- ================= Sidebar ================= -->
+    <nav class="sidebar">
+      <button class="nav-item active" data-view="data"><span class="n">1</span> Data</button>
+      <button class="nav-item" data-view="design"><span class="n">2</span> Design</button>
+      <button class="nav-item" data-view="preview"><span class="n">3</span> Preview</button>
+      <button class="nav-item" data-view="export"><span class="n">4</span> Export</button>
+      <div class="sidebar-foot">
+        <div class="stat"><span id="statStudents">0</span><small>students</small></div>
+        <div class="stat"><span id="statPhotos">0</span><small>photos</small></div>
+      </div>
+    </nav>
+
+    <!-- ================= Main views ================= -->
+    <main class="content" id="content"></main>
+  </div>
+
+  <!-- ================= Status bar ================= -->
+  <footer class="statusbar">
+    <span id="statusMsg">Ready</span>
+    <span class="grow"></span>
+    <span id="autosaveDot" class="autosave">● autosaved</span>
+    <span id="issueSummary"></span>
+  </footer>
+
+  <!-- ================= Generate overlay ================= -->
+  <div class="overlay" id="genOverlay" hidden>
+    <div class="gen-card">
+      <h3>Generating cards…</h3>
+      <div class="progress"><div id="genBar" class="bar"></div></div>
+      <div id="genText" class="gen-text">Preparing…</div>
+      <button class="btn ghost" id="btnCancelGen">Cancel</button>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+
+  <!-- ===== Libraries (vendored, offline) ===== -->
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="vendor/JsBarcode.all.min.js"></script>
+  <script src="vendor/qrcode-generator.js"></script>
+
+  <!-- ===== Baked exact template (data URI) ===== -->
+  <script src="js/template-data.js"></script>
+
+  <!-- ===== Application modules (clean, layered) ===== -->
+  <script src="js/utils.js"></script>
+  <script src="js/preset.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/excel.js"></script>
+  <script src="js/photos.js"></script>
+  <script src="js/images.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/project.js"></script>
+  <script src="js/editor.js"></script>
+  <script src="js/preview.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
